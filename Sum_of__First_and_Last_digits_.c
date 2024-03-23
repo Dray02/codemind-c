@@ -1,9 +1,7 @@
 #include <stdio.h>
-#include <math.h>
 
 int main() {
-    int num, sum, digits, firstDigit, lastDigit;
-    sum = 0;
+    int num, sum = 0, firstDigit, lastDigit;
 
     // Input a number from the user
     scanf("%d", &num);
@@ -11,13 +9,16 @@ int main() {
     // Find the last digit
     lastDigit = num % 10;
 
-    // Find the total number of digits - 1
-    digits = (int)log10(num);
+    // Copy the number to find the first digit
+    firstDigit = num;
 
-    // Find the first digit
-    firstDigit = (int)(num / pow(10, digits));
+    // Find the first digit by dividing num by 10 until only the first digit is left
+    while (num >= 10) {
+        num = num / 10;
+    }
+    firstDigit = num;
 
-    // Calculate the sum
+    // Calculate the sum of the first and last digit
     sum = firstDigit + lastDigit;
 
     printf("%d
